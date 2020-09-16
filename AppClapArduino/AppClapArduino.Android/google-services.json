@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "710510668000",
+    "firebase_url": "https://clapapparduino.firebaseio.com",
+    "project_id": "clapapparduino",
+    "storage_bucket": "clapapparduino.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710510668000:android:e0927cddc46fa238ec8885",
+        "android_client_info": {
+          "package_name": "com.dektech.clapapparduino"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710510668000-m5briu2lg56p5tuu3i2rgo7lsvjdhfnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbKwsZW1c5kZSWzM-v7luHkeJxySCEQ0o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710510668000-m5briu2lg56p5tuu3i2rgo7lsvjdhfnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
