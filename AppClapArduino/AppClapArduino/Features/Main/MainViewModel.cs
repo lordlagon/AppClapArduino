@@ -23,6 +23,8 @@ namespace Core
         #region Commands
         public ICommand LigarCommand { get; }
         public ICommand DesligarCommand { get; }
+        public ICommand GetStatusCommand { get; }
+        
 
         #endregion
         #region Init
@@ -33,6 +35,8 @@ namespace Core
             _firebaseService = firebaseService;
             LigarCommand = new Command(async () => await ExecuteLigarCommandAsync());
             DesligarCommand = new Command(async () => await ExecuteDesligarCommandAsync());
+            GetStatusCommand = new Command(async () => await ExecuteGetStatusCommandAsync());
+        
         }
 
         protected override async Task InitializeAsync()
@@ -61,6 +65,10 @@ namespace Core
             await GetLedStatus();
 
         }
-      
+        public async Task ExecuteGetStatusCommandAsync()
+        {
+            await GetLedStatus();
+        }
+
     }
 }

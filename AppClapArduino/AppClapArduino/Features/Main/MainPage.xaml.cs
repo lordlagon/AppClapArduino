@@ -9,6 +9,12 @@ namespace Core
         {
             InitializeComponent();
         }
-        
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ViewModel?.GetLedStatus();
+        }
+
     }
 }

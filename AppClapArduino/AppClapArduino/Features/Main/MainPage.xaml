@@ -7,6 +7,9 @@
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="Bem vindo ao AppClap!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GetStatusCommand}"/>
+            </Frame.GestureRecognizers>
         </Frame>
         <Label Text="Trabalho com Node-Red e Arduino" FontSize="Title" Padding="30,10,30,10" HorizontalTextAlignment="Center"/>
         <Label Text="Basicamente pega os dados do Firebase, para acender mudar a cor do quadro. Liga e Desliga o Led do Arduino, salvando no firebase!" FontSize="16" Padding="30,0,30,0"/>

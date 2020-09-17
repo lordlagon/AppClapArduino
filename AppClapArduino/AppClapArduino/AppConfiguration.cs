@@ -9,7 +9,7 @@ namespace Core
     {
         //public static string ApiUrl => "https:// .com";
 
-        public static string AppCenterKey => "android=89890d62-8dd2-440b-b203-4efe8d2556ef;";
+        public static string AppCenterKey => "android=0276c1f8-a859-48af-91c4-26b5a9c2338d;";
         public static string FirebaseDatabaseUrl => "https://clapapparduino.firebaseio.com/";
     } 
 }
