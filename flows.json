@@ -1,0 +1,516 @@
+[
+    {
+        "id": "af4cba3c.cd5048",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7573c5d9.38933c",
+        "type": "switch",
+        "z": "af4cba3c.cd5048",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 310,
+        "y": 60,
+        "wires": [
+            [
+                "3d9ba783.9bdc28"
+            ]
+        ]
+    },
+    {
+        "id": "15f5826d.40b43e",
+        "type": "change",
+        "z": "af4cba3c.cd5048",
+        "name": "Desligado",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "desligado",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 220,
+        "y": 400,
+        "wires": [
+            [
+                "18f55dc8.ae8722"
+            ]
+        ]
+    },
+    {
+        "id": "5b9774d1.f8d4fc",
+        "type": "arduino in",
+        "z": "af4cba3c.cd5048",
+        "name": "sensorClap",
+        "pin": "2",
+        "state": "INPUT",
+        "arduino": "23cf3f11.e88f7",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            [
+                "7573c5d9.38933c"
+            ]
+        ]
+    },
+    {
+        "id": "56ad02aa.60fe7c",
+        "type": "change",
+        "z": "af4cba3c.cd5048",
+        "name": "Ligado",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ligado",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 340,
+        "wires": [
+            [
+                "18f55dc8.ae8722"
+            ]
+        ]
+    },
+    {
+        "id": "3d9ba783.9bdc28",
+        "type": "function",
+        "z": "af4cba3c.cd5048",
+        "name": "f",
+        "func": "var led = global.get(\"pinLed\");\nmsg = {};\nif(led!==1){\n    msg.payload=1;\n}else{ \n    msg.payload=0;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 490,
+        "y": 60,
+        "wires": [
+            [
+                "615683e9.7387cc"
+            ]
+        ]
+    },
+    {
+        "id": "615683e9.7387cc",
+        "type": "switch",
+        "z": "af4cba3c.cd5048",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 830,
+        "y": 60,
+        "wires": [
+            [
+                "26fe390e.f909f6"
+            ],
+            [
+                "7f311fb7.cdb29"
+            ]
+        ]
+    },
+    {
+        "id": "e9784e95.bd58a",
+        "type": "arduino out",
+        "z": "af4cba3c.cd5048",
+        "name": "led",
+        "pin": "7",
+        "state": "OUTPUT",
+        "arduino": "23cf3f11.e88f7",
+        "x": 910,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "78e43ce4.e21814",
+        "type": "arduino in",
+        "z": "af4cba3c.cd5048",
+        "name": "ledpin",
+        "pin": "4",
+        "state": "PULLUP",
+        "arduino": "23cf3f11.e88f7",
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "860cc68.a942238"
+            ]
+        ]
+    },
+    {
+        "id": "18f55dc8.ae8722",
+        "type": "ui_text",
+        "z": "af4cba3c.cd5048",
+        "group": "d3b4f000.5dcfa",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Led Status",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 410,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "b2180626.460618",
+        "type": "ui_button",
+        "z": "af4cba3c.cd5048",
+        "name": "",
+        "group": "d3b4f000.5dcfa",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Desligar",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "str",
+        "topic": "",
+        "x": 640,
+        "y": 140,
+        "wires": [
+            [
+                "615683e9.7387cc"
+            ]
+        ]
+    },
+    {
+        "id": "860cc68.a942238",
+        "type": "switch",
+        "z": "af4cba3c.cd5048",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 330,
+        "y": 240,
+        "wires": [
+            [
+                "56ad02aa.60fe7c",
+                "d633df74.5cc19"
+            ],
+            [
+                "15f5826d.40b43e",
+                "d633df74.5cc19"
+            ]
+        ]
+    },
+    {
+        "id": "f26a83c.80cd68",
+        "type": "ui_button",
+        "z": "af4cba3c.cd5048",
+        "name": "",
+        "group": "d3b4f000.5dcfa",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Ligar",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "",
+        "x": 650,
+        "y": 100,
+        "wires": [
+            [
+                "615683e9.7387cc"
+            ]
+        ]
+    },
+    {
+        "id": "fb246004.8079d",
+        "type": "ui_text",
+        "z": "af4cba3c.cd5048",
+        "group": "d3b4f000.5dcfa",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "firebase",
+        "label": "firebase",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 880,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "58353d10.a006d4",
+        "type": "firebase modify",
+        "z": "af4cba3c.cd5048",
+        "name": "upload",
+        "firebaseconfig": "",
+        "childpath": "/led_status",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 890,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bc4a5123.db187",
+        "type": "firebase.on",
+        "z": "af4cba3c.cd5048",
+        "name": "fb_led",
+        "firebaseconfig": "",
+        "childpath": "/led_status",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 650,
+        "y": 460,
+        "wires": [
+            [
+                "fb246004.8079d",
+                "a3506bc2.8f4298"
+            ]
+        ]
+    },
+    {
+        "id": "7f311fb7.cdb29",
+        "type": "change",
+        "z": "af4cba3c.cd5048",
+        "name": "true",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 220,
+        "wires": [
+            [
+                "58353d10.a006d4"
+            ]
+        ]
+    },
+    {
+        "id": "26fe390e.f909f6",
+        "type": "change",
+        "z": "af4cba3c.cd5048",
+        "name": "false",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 260,
+        "wires": [
+            [
+                "58353d10.a006d4"
+            ]
+        ]
+    },
+    {
+        "id": "d633df74.5cc19",
+        "type": "function",
+        "z": "af4cba3c.cd5048",
+        "name": "f_led",
+        "func": "var pinled ;\nglobal.set(\"pinLed\", msg);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 470,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a3506bc2.8f4298",
+        "type": "switch",
+        "z": "af4cba3c.cd5048",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 610,
+        "y": 340,
+        "wires": [
+            [
+                "f458fcda.76275"
+            ],
+            [
+                "95417885.0a2bd8"
+            ]
+        ]
+    },
+    {
+        "id": "95417885.0a2bd8",
+        "type": "change",
+        "z": "af4cba3c.cd5048",
+        "name": "zero",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 380,
+        "wires": [
+            [
+                "e9784e95.bd58a"
+            ]
+        ]
+    },
+    {
+        "id": "f458fcda.76275",
+        "type": "change",
+        "z": "af4cba3c.cd5048",
+        "name": "um",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 320,
+        "wires": [
+            [
+                "e9784e95.bd58a"
+            ]
+        ]
+    },
+    {
+        "id": "23cf3f11.e88f7",
+        "type": "arduino-board",
+        "z": "",
+        "device": "COM5"
+    },
+    {
+        "id": "d3b4f000.5dcfa",
+        "type": "ui_group",
+        "z": "",
+        "name": "Principal",
+        "tab": "315be930.3249b6",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "315be930.3249b6",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
